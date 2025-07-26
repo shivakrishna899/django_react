@@ -16,13 +16,15 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from .views import home
-from .views import page
-from .views import youtube
+from django.urls import path,include
+from . import views
+
+# from .views import home
+# from .views import page
+# from .views import youtube
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",home,name="home"),
-    path("page/",page,name="page"),
-    path("youtube/",youtube,name="youtube"),
+    path('',views.home,name='home'),
+    path("about/", views.about, name="about"),
+    path("shiva/", include('shiva.urls')),
 ]
